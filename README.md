@@ -87,3 +87,54 @@ import { AppComponent } from './app.component';
 })
 export class AppModule { }
 ~~~
+
+###   Routes
+
+On a single page application (SPA) you use routes to hide certain content and components. To define routes
+go to `./src/app/app.config.ts` and you'll see that Angular import a routes variable from `app.routes.ts`, this variable will contain path-component objects
+
+~~~ts
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+};
+
+~~~
+
+~~~ts
+import { Routes } from '@angular/router';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+
+export const routes: Routes = [
+    {path: 'catalogue', component: CatalogueComponent}
+];
+~~~
+
+Once you define the routes you can use the `[routerLink]` directive in your html just add in your component imports `RouterLink`,`RouterLinkActive`,`RouterOutlet`
+
+
+~~~ts
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet
+  ],
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.scss'
+})
+export class NavbarComponent {
+
+}
+~~~
+
+Finally, you must add `<router-outlet></router-outlet>` in your app.component.ts file, this ordain Angular to enables routing

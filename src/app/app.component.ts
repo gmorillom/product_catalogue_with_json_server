@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @Component({
@@ -8,7 +11,12 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     CatalogueComponent,
+    FontAwesomeModule,
+    NavbarComponent,
+    DashboardComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
