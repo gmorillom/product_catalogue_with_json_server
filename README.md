@@ -1,6 +1,8 @@
-#   Catalogo de productos con Redis
+#   Product catalogue with Json Server
 
-###     Compilar Tailwind
+####  !Important: Initially, this project was thought to connect with Redis service but since Angular is frontend isn't possible to do
+
+###     Compile Tailwind
 1. Run command `npx tailwindcss init`, this creates a **tailwind.config.js**. 
 2. Open **tailwind.config.js** and fill **content** attribute with `./src/**/*.{html,ts,scss}`, here you are telling Angular it must watch every __.html__, __.scss__, __.ts__ file in `src` or where your templates are, you can add as folders you have your templates in.
 3. Add this code on your main `styles.scss` or main styles file:
