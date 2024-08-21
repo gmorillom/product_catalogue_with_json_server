@@ -1,26 +1,26 @@
-<table class="table-auto">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-        <td>1961</td>
-        <td>
-          
-        </td>
-      </tr>
-      <tr>
-        <td>Witchy Woman</td>
-        <td>1972</td>
-      </tr>
-      <tr>
-        <td>Shining Star</td>
-        <td>1975</td>
-      </tr>
-    </tbody>
-  </table>
+<mat-table matSort [dataSource]="sortedProducts" (matSortChange)="sortProducts($event)">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
+    <mat-cell  *matCellDef="let prod"> {{prod.title}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+    <mat-cell  *matCellDef="let prod"> {{ prod.currencySymbol }} {{prod.price}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="imageSrc">
+    <mat-header-cell *matHeaderCellDef> Image URL </mat-header-cell>
+    <mat-cell  *matCellDef="let prod"> {{prod.imageSrc}} </mat-cell>
+  </ng-container>
+
+  <!-- Define header columns -->
+  <mat-header-row *matHeaderRowDef="['title','price','imageSrc']"></mat-header-row>
+  <mat-row *matRowDef="let prod; columns: ['title','price','imageSrc']"></mat-row>
+</mat-table>
+
+<mat-paginator [length]="4"
+[pageSize]="1"
+[pageSizeOptions]="[1, 2, 3, 4]"
+aria-label="Select page">
+</mat-paginator>
